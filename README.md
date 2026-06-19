@@ -1,2 +1,29 @@
-# mleyusports-com-cn-2
-乐鱼体育 - https://mleyusports.com.cn
+# 乐鱼体育 - 官方网站
+
+欢迎访问 **乐鱼体育** 的官方网站，域名地址为 [https://mleyusports.com.cn](https://mleyusports.com.cn)。乐鱼体育是一家专注于体育赛事信息与娱乐服务的平台，致力于为广大体育爱好者提供丰富的体育内容与便捷的在线体验。
+
+## 简介
+
+乐鱼体育通过其官方网站 [https://mleyusports.com.cn](https://mleyusports.com.cn) 为用户提供多样化的体育赛事资讯、比分查询以及互动功能。无论您是足球、篮球、网球还是其他体育项目的爱好者，乐鱼体育都能为您带来及时、准确的信息服务。
+
+## 特点
+
+- **实时赛事数据**：乐鱼体育平台整合了国内外主流体育赛事的数据，帮助用户快速掌握最新比分与赛程。
+- **简洁界面**：网站设计注重用户体验，信息展示清晰，便于快速浏览与操作。
+- **多终端支持**：通过 [https://mleyusports.com.cn](https://mleyusports.com.cn) 访问，您可以在电脑、手机或平板等设备上获得一致的使用体验。
+- **社区互动**：乐鱼体育鼓励用户参与讨论与分享，营造健康的体育交流氛围。
+
+## 访问方式
+
+您可以通过以下方式直接访问乐鱼体育官方网站：
+
+- 在浏览器地址栏输入 [https://mleyusports.com.cn](https://mleyusports.com.cn)
+- 搜索关键词“乐鱼体育”找到官方入口
+
+## 注意事项
+
+乐鱼体育始终遵循相关法律法规，致力于提供真实、合规的体育信息服务。请认准唯一官方域名 [https://mleyusports.com.cn](https://mleyusports.com.cn)，避免访问非官方来源。如有任何问题，欢迎通过网站内提供的联系方式进行咨询。
+
+---
+
+感谢您对乐鱼体育的关注与支持，期待在 [https://mleyusports.com.cn](https://mleyusports.com.cn) 与您相遇！

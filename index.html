@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼体育 · 杂志专题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "PingFang SC", "Noto Sans SC", "Source Han Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(145deg, #fce7d0 0%, #f9d6b0 40%, #f2c094 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+      color: #2e241b;
+    }
+
+    .magazine {
+      max-width: 960px;
+      width: 100%;
+      background: rgba(255, 252, 245, 0.85);
+      backdrop-filter: blur(4px);
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 0 20px 40px -8px rgba(120, 60, 20, 0.25);
+      overflow: hidden;
+      padding: 2rem 2.4rem 2.8rem;
+      transition: all 0.2s ease;
+    }
+
+    /* 首页横幅 */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #d88f5a 0%, #b9723e 100%);
+      margin: -2rem -2.4rem 2.4rem -2.4rem;
+      padding: 3rem 2.4rem 2.8rem;
+      border-radius: 0 0 80px 80px;
+      color: #fef7ed;
+      text-shadow: 0 2px 6px rgba(60, 30, 10, 0.3);
+      box-shadow: inset 0 -8px 12px -6px rgba(0,0,0,0.08);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -28px;
+      left: 0;
+      right: 0;
+      height: 56px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(248, 220, 190, 0.5) 0%, transparent 70%);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 small {
+      font-size: 1.2rem;
+      font-weight: 400;
+      opacity: 0.8;
+      letter-spacing: 2px;
+      background: rgba(255, 240, 220, 0.2);
+      padding: 0.1rem 1rem;
+      border-radius: 40px;
+      margin-left: 0.2rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 680px;
+      opacity: 0.9;
+      margin-top: 0.4rem;
+      line-height: 1.7;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(255, 245, 225, 0.2);
+      backdrop-filter: blur(2px);
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255, 250, 240, 0.3);
+      margin-top: 0.6rem;
+    }
+
+    /* 内容卡片 */
+    .card {
+      background: #fffdf9;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      box-shadow: 0 8px 20px -8px rgba(100, 60, 20, 0.12);
+      border: 1px solid rgba(240, 210, 180, 0.2);
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 14px 28px -10px rgba(130, 70, 30, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #653e25;
+      margin-bottom: 0.8rem;
+      border-left: 5px solid #c5824c;
+      padding-left: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #7a4d2e;
+      margin: 1.2rem 0 0.4rem 0;
+    }
+
+    .card p {
+      margin-bottom: 0.8rem;
+      color: #3a2d22;
+      font-size: 1rem;
+    }
+
+    .card .highlight {
+      background: linear-gradient(120deg, #f5e5d0 0%, #f5e5d0 40%, transparent 90%);
+      padding: 0.1rem 0.5rem;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+
+    /* 列表修饰 */
+    .feature-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.6rem;
+      list-style: none;
+      margin: 1rem 0 0.4rem 0;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f7efe6;
+      padding: 0.3rem 1.2rem 0.3rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+    }
+
+    .feature-list li::before {
+      content: "✦";
+      color: #b76e3a;
+      font-size: 0.8rem;
+      margin-right: 0.3rem;
+    }
+
+    /* 链接风格 */
+    .magazine a {
+      color: #b36b37;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.05rem 0.5rem;
+      border-radius: 40px;
+      background: rgba(200, 140, 80, 0.08);
+      transition: background 0.2s, color 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+
+    .magazine a:hover {
+      background: rgba(180, 110, 60, 0.2);
+      color: #7e4b26;
+      border-bottom-color: #b2703d;
+    }
+
+    /* 引语/场景卡片 */
+    .quote-card {
+      background: #f7ede2;
+      border-radius: 40px 20px 40px 20px;
+      padding: 1.6rem 2rem;
+      margin: 1.8rem 0;
+      border-left: 6px solid #c5824c;
+      font-style: normal;
+    }
+
+    .quote-card p {
+      margin-bottom: 0.3rem;
+    }
+
+    .quote-card .source {
+      text-align: right;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-top: 0.6rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.8rem;
+      margin: 1.2rem 0 0.2rem 0;
+    }
+
+    .faq-item {
+      background: #fcf6ef;
+      border-radius: 24px;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid #eadacb;
+    }
+
+    .faq-item strong {
+      color: #5f3c24;
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item span {
+      font-size: 0.9rem;
+      color: #4d3a2b;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      border-top: 2px dashed #dbb99a;
+      text-align: center;
+      font-size: 1rem;
+      color: #4c3827;
+    }
+
+    .footer-note .big-link {
+      display: inline-block;
+      background: #c5824c;
+      color: #fef6ed !important;
+      padding: 0.5rem 2rem;
+      border-radius: 80px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin: 0.8rem 0 0.2rem;
+      box-shadow: 0 4px 12px rgba(150, 80, 30, 0.2);
+      transition: background 0.2s, transform 0.2s;
+      border-bottom: none !important;
+      background: linear-gradient(145deg, #c5824c, #b06d3a);
+    }
+
+    .footer-note .big-link:hover {
+      background: #9f6435;
+      transform: scale(1.02);
+    }
+
+    .footer-note p {
+      margin: 0.2rem 0;
+    }
+
+    .footer-note .meta {
+      font-size: 0.8rem;
+      opacity: 0.6;
+      margin-top: 1.2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 680px) {
+      .magazine {
+        padding: 1.4rem 1.2rem 2rem;
+        border-radius: 32px;
+      }
+      .hero {
+        margin: -1.4rem -1.2rem 1.8rem -1.2rem;
+        padding: 2rem 1.2rem 2rem;
+        border-radius: 0 0 50px 50px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero h1 small {
+        font-size: 1rem;
+      }
+      .card {
+        padding: 1.4rem 1.2rem;
+      }
+      .faq-mini {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .feature-list {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .quote-card {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 440px) {
+      body {
+        padding: 0.8rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="magazine">
+
+  <!-- 首页横幅 -->
+  <div class="hero">
+    <h1>
+      乐鱼体育
+      <small>· 在场</small>
+    </h1>
+    <p>从清晨的绿道到夜晚的球场，把运动活成一种日常。不只是竞技，更是生活里的张力与自在。</p>
+    <div class="tagline">⚡ 杂志专题 · 节奏与呼吸</div>
+  </div>
+
+  <!-- 背景说明  -->
+  <div class="card">
+    <h2>背景 · 为什么是乐鱼体育</h2>
+    <p>几年前的一个傍晚，我在江边看一群孩子踢球，球飞进了树丛，大家笑着去捡。<span class="highlight">乐鱼体育</span>给我的联想就是那种场景——不设限、不端着，运动回归到“好玩”和“陪伴”。</p>
+    <p>这个平台聚合了许多运动品类与社区内容，从赛事资讯到日常训练心得，再到运动装备的朴素测评。它更像是一个运动生活方式的入口，适合那些既想认真流汗、又不愿被严肃说教的人。</p>
+    <p>或许你对某个项目还在观望，或者已经习惯了每周三场球。无论处在哪个阶段，<a href="https://mleyusports.com.cn">乐鱼体育</a>都有一种难得的包容感——它不催促你“更强”，而是鼓励你“动起来”。</p>
+  </div>
+
+  <!-- 三段自然介绍 (融合特点与场景) -->
+  <div class="card">
+    <h2>自然的节奏 · 三段日常</h2>
+
+    <h3>第一段 · 晨间独处</h3>
+    <p>清晨五点半，城市还没完全醒来。跑鞋踩过落叶，心跳和呼吸慢慢合拍。这时候不需要耳机，也不需要目标配速。在<a href="https://mleyusports.com.cn">乐鱼体育</a>上看到有人分享“晨跑一个月身体的变化”，不是那种夸张的对比图，而是朴素的文字——睡眠变沉了，白天不容易犯困。像这样的真实记录，总让人愿意第二天继续把跑鞋放在门口。</p>
+
+    <h3>第二段 · 午后协作</h3>
+    <p>周末约上两三个朋友，在社区球场打一场不记分的比赛。传球、跑位、偶尔的失误变成大笑。运动最迷人的部分往往不是赢，而是那种“我知道你会出现在那里”的默契。<span class="highlight">乐鱼体育</span>里有人聊战术，也有人只是约球搭子。氛围友好，没有好为人师的指教，只有“下次还来”的约定。</p>
+
+    <h3>第三段 · 夜间沉淀</h3>
+    <p>晚上拉伸完毕，冲个澡，翻开手机看看今天的运动数据，或者在社区里刷刷别人的训练vlog。有人分享自己用弹力带做康复的细节，也有人讨论哪款球鞋更适合宽脚。这些内容琐碎但真实，像是运动日记的延伸。<a href="https://mleyusports.com.cn">乐鱼体育</a>上这类生活化的内容密度很高，不浮躁，读起来很放松。</p>
+  </div>
+
+  <!-- 场景点缀 · 引语卡片 -->
+  <div class="quote-card">
+    <p>“运动不是对抗身体的懒惰，而是和它商量一个更舒服的相处方式。”</p>
+    <p>—— 摘自乐鱼体育用户笔记 · 秋</p>
+    <div class="source">#运动随笔 #慢慢来</div>
+  </div>
+
+  <!-- FAQ 摘要 + 特色 -->
+  <div class="card" style="margin-top: 1.2rem;">
+    <h2>常见印象 · 快问快答</h2>
+    <div class="faq-mini">
+      <div class="faq-item">
+        <strong>⚡ 适合新手吗？</strong>
+        <span>大量基础动作拆解、装备选购建议，从零开始毫无压力。</span>
+      </div>
+      <div class="faq-item">
+        <strong>🏀 内容偏向哪类运动？</strong>
+        <span>覆盖跑步、篮球、足球、骑行、力量训练等十几类，不偏科。</span>
+      </div>
+      <div class="faq-item">
+        <strong>🧘 有身心恢复类内容？</strong>
+        <span>有拉伸、冥想、睡眠恢复等板块，注重运动后的平衡。</span>
+      </div>
+      <div class="faq-item">
+        <strong>📱 社区氛围怎么样？</strong>
+        <span>友善、少争吵，分享日常居多，像是一个运动爱好者的小客厅。</span>
+      </div>
+    </div>
+
+    <ul class="feature-list" style="margin-top: 1.4rem;">
+      <li>赛事资讯与原创专栏</li>
+      <li>运动日志 / 打卡氛围</li>
+      <li>装备开箱 · 真实体验</li>
+      <li>城市运动地图</li>
+    </ul>
+  </div>
+
+  <!-- 页尾访问提示 -->
+  <div class="footer-note">
+    <p>如果你也相信运动可以更松弛、更日常，不妨去看看那个社区——</p>
+    <a href="https://mleyusports.com.cn" class="big-link">乐鱼体育</a>
+    <p style="margin-top: 0.8rem; font-size: 0.95rem;">慢慢逛，找找属于你的运动节奏。</p>
+    <div class="meta">杂志专题 · 乐鱼体育 · 生活向</div>
+  </div>
+
+</div>
+</body>
+</html>
