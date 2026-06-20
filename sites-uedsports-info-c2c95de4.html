@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ued体育 · 专题介绍</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f6f4f0;
+            color: #1e1e1e;
+            line-height: 1.7;
+        }
+
+        /* —— 深色拉满的横幅 —— */
+        .hero {
+            background: linear-gradient(145deg, #1f2a2f 0%, #12171a 100%);
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: #f6f4f0;
+            clip-path: ellipse(60% 100% at 50% 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #e3ddd4;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #b2a699;
+            border-top: 1px solid #3d4a4f;
+            display: inline-block;
+            padding-top: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        /* —— 主内容宽容器 —— */
+        .container {
+            max-width: 880px;
+            margin: -1.5rem auto 0;
+            padding: 0 1.5rem 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 背景说明 — 浅色卡片 */
+        .context-box {
+            background: #ffffff;
+            padding: 2.2rem 2rem;
+            border-radius: 32px 32px 24px 24px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+            margin-bottom: 2.8rem;
+        }
+
+        .context-box h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #2d393e;
+            border-left: 4px solid #c87b4a;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .context-box p {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .context-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三段自然介绍 —— 杂志卡片式 */
+        .features-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 1.8rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9e5dd;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2f3c41;
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card h3 span {
+            display: inline-block;
+            background: #e3ddd4;
+            color: #1f2a2f;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0 0.6rem;
+            border-radius: 30px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+            line-height: 1.6;
+        }
+
+        .feature-card p {
+            color: #3c3b39;
+            font-size: 0.98rem;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #b45f3a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #87462a;
+            border-bottom: 1px solid #b45f3a;
+        }
+
+        /* 页尾访问提示 杂志脚标 */
+        .footer-note {
+            background: #ffffff;
+            padding: 2rem 2rem 2.4rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9e5dd;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .footer-note p {
+            font-size: 1rem;
+            color: #2e2e2c;
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-note .site-ref {
+            font-size: 1.2rem;
+        }
+
+        .footer-note .remark {
+            font-size: 0.85rem;
+            color: #787268;
+            margin-top: 0.75rem;
+            border-top: 1px dashed #d9d2c7;
+            padding-top: 0.75rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            .hero { padding: 3.2rem 1.2rem 3rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .sub { font-size: 0.95rem; }
+            .container { padding: 0 1rem 2.5rem; }
+            .context-box, .feature-card, .footer-note { padding: 1.5rem 1.2rem; }
+            .feature-card h3 { font-size: 1.15rem; }
+        }
+
+        @media (max-width: 420px) {
+            .hero h1 { font-size: 1.8rem; }
+            .context-box h2 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色首页横幅 -->
+    <header class="hero">
+        <h1>ued 专题</h1>
+        <div class="sub">杂志式 · 快速识别站点用途</div>
+    </header>
+
+    <main class="container">
+
+        <!-- 背景说明：从用户想快速识别的角度 -->
+        <section class="context-box">
+            <h2>为什么访问这个网站？</h2>
+            <p>打开一个陌生链接，第一反应往往是：<strong>这个网站做什么的？</strong> 如果信息不清晰，多数人会直接关掉。我们为 <a href="https://sites-uedsports.com">ued体育</a> 整理了一份简明背景说明，帮你在一分钟内判断它是否对你有用。</p>
+            <p>网站名称中的“ued”指向用户经验与体育场景的融合。整个站点围绕运动数据、活动组织及社区资讯展开，没有复杂的营销话术，内容更接近一份持续更新的参考手册。</p>
+            <p>无论你是想了解某项运动的基础规则，还是寻找训练计划参考，这里都提供结构化的条目式内容。而且网站保持较快的更新节奏，信息时效性相对可靠。</p>
+        </section>
+
+        <!-- 三段自然介绍，杂志风格卡片 -->
+        <div class="features-grid">
+
+            <article class="feature-card">
+                <h3>▎ 运动项目覆盖<span>入门</span></h3>
+                <p>从田径、球类到户外项目，每个类别都拆解为基本术语、常见误区和简易训练建议。没有深奥的理论，适合刚接触某项运动的人快速建立认知。例如足球板块会从越位规则、阵型图例讲起，篮球部分则包含投篮姿势分解与常见跑位说明。</p>
+            </article>
+
+            <article class="feature-card">
+                <h3>▎ 活动与组织信息</h3>
+                <p>如果你是社团组织者或业余赛事策划，可以在这里找到场地协调清单、安全须知模板以及简易赛程表工具。这部分内容由有经验的爱好者整理，风格务实，不夸大效果。你可以直接参考框架，再根据实际规模调整。</p>
+            </article>
+
+            <article class="feature-card">
+                <h3>▎ 社区与资讯入口</h3>
+                <p>除了静态说明，网站还聚合了训练讨论、装备测评和运动日志等动态内容。浏览时你会发现不少用户贡献的真实反馈——它们往往比广告更值得信赖。当然，所有内容都经过了基本审核，不包含违规或虚假信息。</p>
+            </article>
+
+        </div>
+
+        <!-- 页尾访问提示（嵌入链接） -->
+        <footer class="footer-note">
+            <p>如果你正在寻找一个结构清晰、内容导向务实的体育信息站，</p>
+            <p class="site-ref">可以看看 <a href="https://sites-uedsports.com">ued体育</a> 目前整理的内容。</p>
+            <p class="remark">本页为专题介绍 · 信息经人工梳理 · 2025</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
