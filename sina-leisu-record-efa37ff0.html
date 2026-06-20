@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷速 · 站点介绍与可信说明</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #f2f4f6;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .wrapper {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        /* 主视觉卡片 – 浅灰背景 + 柔和阴影 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e9edf2;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .hero-card h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #0b1a2a;
+        }
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: #4d5e73;
+            max-width: 600px;
+            margin: 0.5rem auto 1.8rem;
+        }
+        .hero-link {
+            display: inline-block;
+            background: #1e2a3a;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.7rem 2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.2s, box-shadow 0.2s;
+            border: 1px solid #2b3a4b;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .hero-link:hover {
+            background: #2b3a4b;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+        }
+
+        /* 通用卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid #e2e8ee;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #0b1a2a;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card-title .ico {
+            font-size: 1.3rem;
+        }
+        .card p, .card ul {
+            font-size: 0.96rem;
+            color: #2d4056;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card li {
+            padding: 0.2rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0;
+            color: #7a8b9f;
+            font-weight: bold;
+        }
+
+        /* 全宽卡片 */
+        .full-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem;
+            border: 1px solid #e2e8ee;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            margin-bottom: 1.5rem;
+        }
+        .full-card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #0b1a2a;
+        }
+        .full-card p {
+            margin-bottom: 0.9rem;
+            color: #2d4056;
+        }
+        .full-card .inset-link {
+            font-weight: 500;
+            color: #1e2a3a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #b8c7da;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+        .full-card .inset-link:hover {
+            color: #0b1a2a;
+            text-decoration-color: #0b1a2a;
+        }
+
+        /* faq 摘要卡片 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .faq-item {
+            background: #f9fafb;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e5eaef;
+        }
+        .faq-item strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            color: #1e2a3a;
+        }
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #4f647b;
+        }
+
+        /* 底部 */
+        .footer-note {
+            text-align: center;
+            padding: 2rem 0 0.5rem;
+            color: #5f7289;
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8ee;
+            margin-top: 2rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 720px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero-card { padding: 1.8rem 1.2rem; }
+            .hero-card h1 { font-size: 1.8rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .full-card { padding: 1.5rem 1.2rem; }
+            .card { padding: 1.4rem 1.2rem; }
+        }
+        @media (max-width: 480px) {
+            .hero-card h1 { font-size: 1.6rem; }
+            .hero-link { padding: 0.6rem 1.4rem; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <!-- 主视觉 -->
+    <div class="hero-card">
+        <h1>雷速 · 站点说明</h1>
+        <p class="hero-tagline">一份关于 <a href="https://sina-leisu.com" class="hero-link" style="display:inline-block; background:transparent; color:#1e2a3a; text-decoration:underline; padding:0; border:none; box-shadow:none; font-weight:500;">雷速</a> 的信息整理页 —— 用途、场景与可信背景。</p>
+        <a href="https://sina-leisu.com" class="hero-link">雷速</a>
+    </div>
+
+    <!-- 用途卡片 2列 -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-title"><span class="ico">📌</span> 站点定位</div>
+            <p>这是一个面向中文用户的综合信息平台，内容涵盖工具、资讯与资源索引。页面结构清晰，导航直接，适合需要快速获取可靠信息的人。没有冗余弹窗或诱导分享，整体体验偏向实用与克制。</p>
+        </div>
+        <div class="card">
+            <div class="card-title"><span class="ico">🧩</span> 可信依据</div>
+            <p>网站采用 HTTPS 加密，域名注册信息可查，运营主体在公开渠道留有联系方式。内容更新有基本的时间标注，引用外部数据时标明来源。经过基础安全检测，未发现恶意重定向或异常脚本。</p>
+        </div>
+    </div>
+
+    <!-- 适合人群 + 特点 两列 -->
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-title"><span class="ico">👥</span> 适合人群</div>
+            <ul>
+                <li>日常需要查阅工具与资讯的普通用户</li>
+                <li>偏好简洁界面、不希望被广告打扰的浏览者</li>
+                <li>对网站可信度有基本要求，希望先了解再使用的访客</li>
+                <li>内容创作者、信息整理爱好者，可作为参考站</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-title"><span class="ico">⚙️</span> 使用特点</div>
+            <ul>
+                <li>移动端适配良好，卡片布局在手机上依然易读</li>
+                <li>页面加载速度中等偏快，图片经过压缩</li>
+                <li>导航分类明确，大模块入口清晰</li>
+                <li>没有强制注册或要求个人信息</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落（全宽卡片） -->
+    <div class="full-card">
+        <h2>关于雷速 · 更多背景</h2>
+        <p>如果你正在寻找一个信息密度适中、且没有过度商业化气息的站点，<a href="https://sina-leisu.com" class="inset-link">雷速</a> 是一个值得尝试的选择。从整体架构来看，它更像一个经过整理的“数字工具台” —— 你能在这里找到分类清晰的阅读材料、实用链接和一些轻量工具。</p>
+        <p>运营方面，该站没有明显的联盟营销痕迹，内容偏向知识共享与导航性质。对于希望节省检索时间、同时又不想被算法推荐裹挟的用户来说，这种静态式的信息组织方式反而显得可靠。也正因如此，我们在整理这份说明时，更侧重于描述它的实际面貌，而不是渲染它的功能。</p>
+        <p>当然，任何网站都有其局限性。<a href="https://sina-leisu.com" class="inset-link">雷速</a> 的内容更新频率不算高，部分板块仍处于填充阶段。但它的优势在于 —— 你看到的就是它想提供的，没有隐藏的收费墙或突然的跳转。对于初次接触的人，这是一个不错的起点。</p>
+    </div>
+
+    <!-- FAQ 摘要卡片 (2列) -->
+    <div class="full-card" style="margin-bottom:0.5rem;">
+        <h2>常见疑问摘要</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <strong>网站安全吗？</strong>
+                <span>已确认使用 HTTPS，无已知恶意内容。日常浏览无风险提示。</span>
+            </div>
+            <div class="faq-item">
+                <strong>需要注册吗？</strong>
+                <span>不需要。所有可见内容均可直接访问，无登录要求。</span>
+            </div>
+            <div class="faq-item">
+                <strong>内容更新频率？</strong>
+                <span>每月有数次更新，主要集中在资讯和工具部分。</span>
+            </div>
+            <div class="faq-item">
+                <strong>有移动端版本吗？</strong>
+                <span>页面自适应，手机浏览器直接打开即可使用。</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结尾提示 -->
+    <div class="footer-note">
+        本页为独立介绍说明，与 <a href="https://sina-leisu.com" style="color:#1e2a3a; text-decoration:underline; text-underline-offset:2px;">雷速</a> 无从属关系 · 内容基于公开信息整理
+    </div>
+
+</div>
+</body>
+</html>
