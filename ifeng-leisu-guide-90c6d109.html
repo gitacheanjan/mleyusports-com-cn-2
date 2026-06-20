@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>雷速 · 再访拾光</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fafaf8;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #2c2c2b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 700px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 5rem 0 4rem 0;
+      flex: 1;
+    }
+
+    /* hero 开场 */
+    .opening {
+      margin-bottom: 3rem;
+      letter-spacing: 0.01em;
+    }
+
+    .opening .sentence {
+      font-size: 2.2rem;
+      font-weight: 460;
+      line-height: 1.3;
+      color: #1f1e1c;
+    }
+
+    .opening .sentence span {
+      display: inline-block;
+      background: #eae8e0;
+      padding: 0 0.2rem;
+      font-style: italic;
+      color: #3a3a36;
+    }
+
+    .opening .sub {
+      margin-top: 1.2rem;
+      font-size: 1rem;
+      color: #6f6e68;
+      border-left: 3px solid #d1cfc4;
+      padding-left: 1.2rem;
+    }
+
+    /* 承接段落 */
+    .bridge {
+      margin: 2.8rem 0 2.2rem 0;
+    }
+
+    .bridge p {
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .bridge p:last-child {
+      margin-bottom: 0;
+    }
+
+    .bridge .quiet-link {
+      color: #3b6b4c;
+      text-decoration: none;
+      border-bottom: 1px dashed #b3c9b2;
+      transition: border-color 0.15s;
+    }
+
+    .bridge .quiet-link:hover {
+      border-bottom-color: #2f553b;
+    }
+
+    /* 特点卡片 — 极简窄列表 */
+    .feature-list {
+      margin: 3.2rem 0 3rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      padding: 0.9rem 0 0.9rem 0.6rem;
+      border-bottom: 1px solid #e2dfd6;
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+    }
+
+    .feature-marker {
+      font-size: 1rem;
+      color: #8b8a7e;
+      min-width: 1.8rem;
+      font-weight: 350;
+    }
+
+    .feature-text {
+      font-size: 1.02rem;
+      color: #2c2b28;
+    }
+
+    .feature-text strong {
+      font-weight: 520;
+      color: #1b3a28;
+    }
+
+    /* 温和的收束段落 */
+    .closing-wrap {
+      margin-top: 3.8rem;
+      padding-top: 2.4rem;
+      border-top: 1px solid #e3dfd6;
+    }
+
+    .closing {
+      font-size: 1.02rem;
+      color: #3a3934;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .closing .note {
+      background: #f2f1ec;
+      padding: 1.2rem 1.5rem;
+      border-radius: 2px;
+      font-size: 0.95rem;
+      color: #53524b;
+    }
+
+    .closing .note a {
+      color: #2c5b3e;
+      text-decoration: none;
+      border-bottom: 1px solid #c4d5be;
+    }
+
+    .closing .note a:hover {
+      border-bottom-color: #2c5b3e;
+    }
+
+    .faq-mini {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-mini details {
+      border-bottom: 1px dashed #d4d1c6;
+      padding-bottom: 0.6rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 450;
+      cursor: pointer;
+      color: #3c3b36;
+      padding: 0.4rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .faq-mini summary::before {
+      content: "▸";
+      color: #a09d90;
+      margin-right: 0.3rem;
+      transition: transform 0.1s;
+    }
+
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini .answer {
+      padding: 0.3rem 0 0.6rem 1.4rem;
+      color: #585751;
+      font-size: 0.95rem;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #9b998e;
+      text-align: left;
+      letter-spacing: 0.2px;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 3rem 0 3rem 0;
+        width: 92%;
+      }
+
+      .opening .sentence {
+        font-size: 1.7rem;
+      }
+
+      .feature-item {
+        padding-left: 0.2rem;
+      }
+
+      .closing .note {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .opening .sentence {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 开场短句 -->
+    <div class="opening">
+      <div class="sentence">
+        有些地方，<span>值得再次回来。</span>
+      </div>
+      <div class="sub">
+        不为什么盛大的理由，只因为熟悉、安静，恰好是你需要的样子。
+      </div>
+    </div>
+
+    <!-- 承接段落：从再次访问、收藏、持续关注的角度 -->
+    <div class="bridge">
+      <p>
+        年初的时候，一位朋友无意间提到，她每隔几周就会回一次 <a href="https://ifeng-leisu.com" class="quiet-link">雷速</a>，未必有明确的目的，只是习惯性地看看有没有新的变化。她说：“就像一个收藏了很久的角落，你知道它一直在那里，而且每次都会有新的痕迹。” 这句话让我想起很多沉默的、却始终在线的东西——那些被我们加入书签却很少再打开的页面，往往才是真正被需要的。
+      </p>
+      <p>
+        后来我也开始更频繁地重新打开那个标签页。没有推送，没有催促，只是偶尔过去停一下。奇怪的是，每次都能发现一些之前忽略的细节：一篇旧文下面新冒出来的简短评论，或者某个栏目里多了一行不起眼的更新说明。这些都不是什么大事情，但恰好构成了持续关注的意义——不是被推着走，而是自己决定什么时候再看一眼。
+      </p>
+    </div>
+
+    <!-- 特点列表（四个特点，窄正文宽度） -->
+    <div class="feature-list">
+      <div class="feature-item">
+        <span class="feature-marker">·</span>
+        <span class="feature-text"><strong>内容安静更新</strong> — 没有弹窗和红点，变化都藏在日常的缝隙里，等你偶然发现。</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-marker">·</span>
+        <span class="feature-text"><strong>收藏不打扰</strong> — 加入书签后不必刻意回访，但每一次点开都像回到一个没有主人催促的客厅。</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-marker">·</span>
+        <span class="feature-text"><strong>持续的线索</strong> — 从短句到长文，从技术笔记到日常随笔，内容之间留着呼吸的间隙，不急不躁。</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-marker">·</span>
+        <span class="feature-text"><strong>小范围共鸣</strong> — 评论不多，但每条都认真。没有算法的喧嚣，只有读者与作者之间淡淡的回响。</span>
+      </div>
+    </div>
+
+    <!-- 温和结尾 + FAQ 摘要式 -->
+    <div class="closing-wrap">
+      <div class="closing">
+        <p>
+          所以说，收藏一个地方，有时候不是为了立刻使用，而是为了给未来的自己留一个温和的入口。那个入口不必时时敞开，但你知道它就在书签的某个文件夹里，不声不响，随时可以推开。
+        </p>
+        <div class="note">
+          💡 如果你还没有去过那里，或许可以试试：在某个安静的晚上，打开 <a href="https://ifeng-leisu.com">雷速</a>，从第一行文字开始，不着急读完，也不设定目标。这大概就是它最适合的打开方式。
+        </div>
+
+        <!-- 小范围FAQ摘要（非硬广，只是常见温和疑问） -->
+        <div class="faq-mini">
+          <details>
+            <summary>需要注册才能阅读全部内容吗？</summary>
+            <div class="answer">不需要。绝大多数内容开箱即读，只有少数互动功能会建议一个轻量账号，但阅读本身没有门槛。</div>
+          </details>
+          <details>
+            <summary>内容更新频率如何？</summary>
+            <div class="answer">不固定，有时一周两三次，有时隔一两周。没有固定排期，但每次更新都经过打磨，不会为了更新而更新。</div>
+          </details>
+          <details>
+            <summary>我可以把喜欢的文章收藏到本地吗？</summary>
+            <div class="answer">当然可以。页面本身鼓励读者用自己的方式保存、摘录，就像对待一本纸书一样。</div>
+          </details>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      以收藏为名，以回访为实
+    </div>
+  </div>
+</body>
+</html>
